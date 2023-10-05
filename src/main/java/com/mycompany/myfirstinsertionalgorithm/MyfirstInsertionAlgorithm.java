@@ -4,6 +4,7 @@
 
 package com.mycompany.myfirstinsertionalgorithm;
 
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -14,17 +15,29 @@ public class MyfirstInsertionAlgorithm {
 
     public static void main(String[] args) {
         Scanner mySc = new Scanner(System.in);
-        int[] arr = {10, 5, 8, 9, 4};
+        Random rand = new Random(); //Randomize grades
+        int totStudents, i; //tot students and index
+        totStudents = i = 0;
         
-        insertion(arr);
+        System.out.println("How many students are in the class?");
+        totStudents = mySc.nextInt();
+        int arr[] = new int[totStudents]; //array will have same number as students number
         
-        System.out.println("Values in correct order: ");
-        
-        for(int arrEl : arr){
-            System.out.printf(" - %d",arrEl);
-            
+        while(i < totStudents)
+        {
+            arr[i] = rand.nextInt(10); //assigne to each student a grade
+            i++;
         }
         
+        insertion(arr); //sort by grade
+        System.out.println("Grades:");
+        for(int arrEl : arr){
+            System.out.printf("%d ",arrEl);
+        }
+        
+        System.out.println("\n");
+        System.out.printf("Biggest grade: %d\n", arr[totStudents-1]);
+        System.out.printf("Smallest grade: %d", arr[0]);
     }
     
     public static void insertion(int arr[])
